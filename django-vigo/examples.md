@@ -45,18 +45,18 @@ class Post(models.Model):
 
     objects = PostManager()
 
+    class Meta:
+        app_label = 'core'
+        verbose_name = _('Post')
+        verbose_name_plural = _('Posts')
+        db_table = 'post'
+
     def __str__(self):
         return f'{self.title}'
 
     def natural_key(self):
         return (self.author.email, self.title)
     natural_key.dependencies = ['auth.user']
-
-    class Meta:
-        app_label = 'core'
-        verbose_name = _('Post')
-        verbose_name_plural = _('Posts')
-        db_table = 'post'
 ```
 
 </assistant_response>
